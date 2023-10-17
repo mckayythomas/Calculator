@@ -7,7 +7,7 @@ To use this app, simply open visual studio and clone the repository. You can the
 [Visual Studio Install](https://learn.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2022)
 On install of visual studio make sure to select the .NET framework tools as well as the C++ tools to be able to run this project.
 
-[C++ Calculator Demo](https://youtu.be/e3iyuHnBqNQ)
+[C++ Calculator Demo](https://youtu.be/6O8_282JQWA)
 
 # Development Environment
 
