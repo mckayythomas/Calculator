@@ -77,6 +77,8 @@ namespace CppCLRWinFormsProject {
 
   private: System::Windows::Forms::Button^ multiplication;
   private: System::Windows::Forms::Button^ addition;
+  private: System::Windows::Forms::Button^ exponent;
+  private: System::Windows::Forms::Button^ squared;
 
 
   protected:
@@ -117,6 +119,8 @@ namespace CppCLRWinFormsProject {
         this->subtraction = (gcnew System::Windows::Forms::Button());
         this->multiplication = (gcnew System::Windows::Forms::Button());
         this->addition = (gcnew System::Windows::Forms::Button());
+        this->exponent = (gcnew System::Windows::Forms::Button());
+        this->squared = (gcnew System::Windows::Forms::Button());
         this->SuspendLayout();
         // 
         // display
@@ -250,9 +254,9 @@ namespace CppCLRWinFormsProject {
         this->equals->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
         this->equals->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->equals->Location = System::Drawing::Point(314, 280);
+        this->equals->Location = System::Drawing::Point(128, 446);
         this->equals->Name = L"equals";
-        this->equals->Size = System::Drawing::Size(83, 77);
+        this->equals->Size = System::Drawing::Size(269, 77);
         this->equals->TabIndex = 12;
         this->equals->Text = L"=";
         this->equals->UseVisualStyleBackColor = false;
@@ -278,7 +282,7 @@ namespace CppCLRWinFormsProject {
         this->clear->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
         this->clear->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
             static_cast<System::Byte>(0)));
-        this->clear->Location = System::Drawing::Point(220, 280);
+        this->clear->Location = System::Drawing::Point(34, 446);
         this->clear->Name = L"clear";
         this->clear->Size = System::Drawing::Size(83, 77);
         this->clear->TabIndex = 10;
@@ -356,11 +360,41 @@ namespace CppCLRWinFormsProject {
         this->addition->UseVisualStyleBackColor = false;
         this->addition->Click += gcnew System::EventHandler(this, &Form1::addition_Click);
         // 
+        // exponent
+        // 
+        this->exponent->BackColor = System::Drawing::SystemColors::ButtonFace;
+        this->exponent->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+        this->exponent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->exponent->Location = System::Drawing::Point(314, 280);
+        this->exponent->Name = L"exponent";
+        this->exponent->Size = System::Drawing::Size(83, 77);
+        this->exponent->TabIndex = 18;
+        this->exponent->Text = L"^";
+        this->exponent->UseVisualStyleBackColor = false;
+        this->exponent->Click += gcnew System::EventHandler(this, &Form1::exponent_Click);
+        // 
+        // squared
+        // 
+        this->squared->BackColor = System::Drawing::SystemColors::ButtonFace;
+        this->squared->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+        this->squared->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+            static_cast<System::Byte>(0)));
+        this->squared->Location = System::Drawing::Point(220, 280);
+        this->squared->Name = L"squared";
+        this->squared->Size = System::Drawing::Size(83, 77);
+        this->squared->TabIndex = 17;
+        this->squared->Text = L"^2";
+        this->squared->UseVisualStyleBackColor = false;
+        this->squared->Click += gcnew System::EventHandler(this, &Form1::squared_Click);
+        // 
         // Form1
         // 
         this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
         this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-        this->ClientSize = System::Drawing::Size(437, 453);
+        this->ClientSize = System::Drawing::Size(437, 550);
+        this->Controls->Add(this->exponent);
+        this->Controls->Add(this->squared);
         this->Controls->Add(this->division);
         this->Controls->Add(this->subtraction);
         this->Controls->Add(this->multiplication);
@@ -378,6 +412,7 @@ namespace CppCLRWinFormsProject {
         this->Controls->Add(this->three);
         this->Controls->Add(this->one);
         this->Controls->Add(this->display);
+        this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
         this->Margin = System::Windows::Forms::Padding(4);
         this->Name = L"Form1";
         this->Text = L"C++ Calculator";
@@ -397,7 +432,7 @@ namespace CppCLRWinFormsProject {
           display->Text = "1";
       }
       else {
-          display->Text = Convert::ToInt32(display->Text) + "1";
+          display->Text = Convert::ToInt64(display->Text) + "1";
       }
   }
 private: System::Void two_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -405,7 +440,7 @@ private: System::Void two_Click(System::Object^ sender, System::EventArgs^ e) {
         display->Text = "2";
     }
     else {
-        display->Text = Convert::ToInt32(display->Text) + "2";
+        display->Text = Convert::ToInt64(display->Text) + "2";
     }
 }
 private: System::Void three_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -413,7 +448,7 @@ private: System::Void three_Click(System::Object^ sender, System::EventArgs^ e) 
         display->Text = "3";
     }
     else {
-        display->Text = Convert::ToInt32(display->Text) + "3";
+        display->Text = Convert::ToInt64(display->Text) + "3";
     }
 }
 private: System::Void four_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -421,7 +456,7 @@ private: System::Void four_Click(System::Object^ sender, System::EventArgs^ e) {
         display->Text = "4";
     }
     else {
-        display->Text = Convert::ToInt32(display->Text) + "4";
+        display->Text = Convert::ToInt64(display->Text) + "4";
     }
 }
 private: System::Void five_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -429,7 +464,7 @@ private: System::Void five_Click(System::Object^ sender, System::EventArgs^ e) {
         display->Text = "5";
     }
     else {
-        display->Text = Convert::ToInt32(display->Text) + "5";
+        display->Text = Convert::ToInt64(display->Text) + "5";
     }
 }
 private: System::Void six_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -437,7 +472,7 @@ private: System::Void six_Click(System::Object^ sender, System::EventArgs^ e) {
         display->Text = "6";
     }
     else {
-        display->Text = Convert::ToInt32(display->Text) + "6";
+        display->Text = Convert::ToInt64(display->Text) + "6";
     }
 }
 private: System::Void seven_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -445,7 +480,7 @@ private: System::Void seven_Click(System::Object^ sender, System::EventArgs^ e) 
         display->Text = "7";
     }
     else {
-        display->Text = Convert::ToInt32(display->Text) + "7";
+        display->Text = Convert::ToInt64(display->Text) + "7";
     }
 }
 private: System::Void eight_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -453,7 +488,7 @@ private: System::Void eight_Click(System::Object^ sender, System::EventArgs^ e) 
         display->Text = "8";
     }
     else {
-        display->Text = Convert::ToInt32(display->Text) + "8";
+        display->Text = Convert::ToInt64(display->Text) + "8";
     }
 }
 private: System::Void nine_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -461,7 +496,7 @@ private: System::Void nine_Click(System::Object^ sender, System::EventArgs^ e) {
         display->Text = "9";
     }
     else {
-        display->Text = Convert::ToInt32(display->Text) + "9";
+        display->Text = Convert::ToInt64(display->Text) + "9";
     }
 }
 private: System::Void zero_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -469,32 +504,32 @@ private: System::Void zero_Click(System::Object^ sender, System::EventArgs^ e) {
         display->Text = "0";
     }
     else {
-        display->Text = Convert::ToInt32(display->Text) + "0";
+        display->Text = Convert::ToInt64(display->Text) + "0";
     }
 }
 private: System::Void addition_Click(System::Object^ sender, System::EventArgs^ e) {
-    firstNum = Convert::ToInt32(display->Text);
+    firstNum = Convert::ToInt64(display->Text);
     display->Text="0";
     operation = '+';
 }
 private: System::Void subtraction_Click(System::Object^ sender, System::EventArgs^ e) {
-    firstNum = Convert::ToInt32(display->Text);
+    firstNum = Convert::ToInt64(display->Text);
     display->Text = "0";
     operation = '-';
 }
 private: System::Void multiplication_Click(System::Object^ sender, System::EventArgs^ e) {
-    firstNum = Convert::ToInt32(display->Text);
+    firstNum = Convert::ToInt64(display->Text);
     display->Text = "0";
     operation = 'x';
 }
 private: System::Void division_Click(System::Object^ sender, System::EventArgs^ e) {
-    firstNum = Convert::ToInt32(display->Text);
+    firstNum = Convert::ToInt64(display->Text);
     display->Text = "0";
     operation = '÷';
 }
 private: System::Void equals_Click(System::Object^ sender, System::EventArgs^ e) {
       if (firstNum != -1) {
-          secondNum = Convert::ToInt32(display->Text);
+          secondNum = Convert::ToInt64(display->Text);
 
           switch (operation)
           {
@@ -514,6 +549,14 @@ private: System::Void equals_Click(System::Object^ sender, System::EventArgs^ e)
               result = firstNum / secondNum;
               display->Text = System::Convert::ToString(result);
               break;
+          case '^':
+              result = firstNum;
+              while (secondNum > 1) {
+                  result = result * firstNum;
+                  secondNum -= 1;
+              }
+              display->Text = System::Convert::ToString(result);
+              break;
           };
           firstNum = -1;
           secondNum = 0;
@@ -522,6 +565,17 @@ private: System::Void equals_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void clear_Click(System::Object^ sender, System::EventArgs^ e) {
     firstNum = -1;
     display->Text = "0";
+}
+private: System::Void squared_Click(System::Object^ sender, System::EventArgs^ e) {
+    firstNum = Convert::ToInt64(display->Text);
+    result = firstNum * firstNum;
+    display->Text = System::Convert::ToString(result);
+    firstNum = -1;
+}
+private: System::Void exponent_Click(System::Object^ sender, System::EventArgs^ e) {
+    firstNum = Convert::ToInt64(display->Text);
+    display->Text = "0";
+    operation = '^';
 }
 }; // end of class Calculator
 } // end of namespace CppCLRWinFormsProject
